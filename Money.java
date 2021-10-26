@@ -119,10 +119,15 @@ public class Money {
         }
     }
 
+    // toString method, contains if statement for proper printing if the number is under 10
     public String toString() {
-        int newCents = (this.cents / 100);
-        String res = ("$"+this.dollars+"."+newCents);
+        if (this.cents <10) {
+        String res = ("$"+this.dollars+".0"+this.cents);
         return res;
+        } else {
+        String res = ("$"+this.dollars+"."+this.cents);
+        return res;
+        }
     }
 
     public void centCheck(){
