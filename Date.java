@@ -89,6 +89,40 @@ public class Date {
         }
     }
 
+    public void setMonth(int month) {
+        if (month > 0 && month < 13) {
+            this.month = month;
+        } else {
+            System.out.println("Invalid month");
+        }
+    }
+
+    public void setDay(int day) {
+        if (day > 0 && day < 32) {
+            this.day = day;
+        } else {
+            System.out.println("Invalid day");
+        }
+    }
+
+    public void setAll(int month, int day, int year) {
+        if (month > 0 && month < 13) {
+            if(day >0 && day < 32) {
+                if(year > 2015 && year < 2027) {
+                    this.month = month;
+                    this.day = day;
+                    this.year = year;
+                } else {
+                    System.out.println("Invalid year");
+                }
+            } else  {
+                System.out.println("Invalid day");
+            }
+        } else {
+            System.out.println("Invalid month");
+        }
+    }
+
 
 
 

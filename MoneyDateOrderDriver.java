@@ -129,6 +129,20 @@ public class MoneyDateOrderDriver {
         System.out.println("Testing getYear, expecting 2016: " + date2.getYear());
         System.out.println("Testing getMonth, expecting 01: " + date2.getMonth());
         System.out.println("Testing getDay, expecting 02: " + date2.getDay());
+        System.out.println("");
+
+        // testing Setters
+        System.out.println("Testing Setters");
+        System.out.println("----------------------------");
+        System.out.println("Showing the value of date1 prior to any setters: " + date1.toString());
+        date1.setAll(1,5,2020);
+        System.out.println("Testing setAll with all valid inputs, expecting 01/05/2020: " + date1.toString());
+        System.out.println("Testing setAll with an invalid month input, expecting error on the next line: ");
+        date1.setAll(13,10,2016);
+        System.out.println("Testing setAll with an invalid day input, expecting error on the next line: ");
+        date1.setAll(11,54,2017);
+        System.out.println("Testing setAll with an invalid year input, expecting error on the next line: ");
+        date1.setAll(9,14,2096);
     }
 
 }
