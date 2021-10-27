@@ -24,6 +24,7 @@ public class MoneyDateOrderDriver {
         System.out.println("----------------------------");
         System.out.println("Testing getDollars, expecting 6: " + money2.getDollars());
         System.out.println("Testing getCents, expecting 11: " + money4.getCents());
+        System.out.println("Testing getMoney, expecting 5.11: " + money4.getMoney());
         System.out.println("");
 
         // testing Setters
@@ -40,7 +41,23 @@ public class MoneyDateOrderDriver {
         money2.setCents(-49);
         money2.setCents(149);
         System.out.println("Testing setCents with a number over 99, expecting $11.49: " + money2.toString());
-        
+        money2.setMoney(5,10);
+        System.out.println("Testing setMoney, expecting $5.10: " + money2.toString());
+        System.out.println("Testing setMoney with a negative dollar amount, expecting error on the next line: ");
+        money2.setMoney(-2,15);
+        System.out.println("Testing setMoney with a negative cent amount, expecting error on the next line: ");
+        money2.setMoney(98,-75);
+        System.out.println("Testing setMoney with a negative cent and dollar amount, expecting error on the next line: ");
+        money2.setMoney(-63,-150);
+        money2.setMoney(30,150);
+        System.out.println("Testing setMoney with a cent value over 99, expecting $31.50: " + money2.toString());
+        System.out.println("");
+
+         // testing Adding
+         System.out.println("Testing Adding");
+         System.out.println("----------------------------");
+         System.out.println("Showing the value of money1 prior to any setters " + money1.toString());
+
 
     }
 }

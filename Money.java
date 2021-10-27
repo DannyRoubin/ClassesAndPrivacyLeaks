@@ -75,10 +75,11 @@ public class Money {
 
     public double getMoney() {
         centCheck();
-        double combined = 0.0;
-        double newCents = (this.cents / 100);
-        combined = (this.dollars + newCents);
-        return combined;
+        double res = 0.0;
+        String strVal = this.getMonToString();
+        res = Double.parseDouble(strVal); 
+
+        return res;
     }
 
     public void add(int dollars) {
@@ -128,6 +129,16 @@ public class Money {
         String res = ("$"+this.dollars+"."+this.cents);
         return res;
         }
+    }
+
+    public String getMonToString() {
+        if (this.cents <10) {
+            String res = (this.dollars+".0"+this.cents);
+            return res;
+            } else {
+            String res = (this.dollars+"."+this.cents);
+            return res;
+            }
     }
 
     public void centCheck(){
