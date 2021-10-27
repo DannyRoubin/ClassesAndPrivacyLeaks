@@ -122,7 +122,6 @@ public class MoneyDateOrderDriver {
         Date date9 = new Date(3,12,11);
         System.out.println("");
 
-
         // testing getters
         System.out.println("Testing getters");
         System.out.println("----------------------------");
@@ -143,6 +142,32 @@ public class MoneyDateOrderDriver {
         date1.setAll(11,54,2017);
         System.out.println("Testing setAll with an invalid year input, expecting error on the next line: ");
         date1.setAll(9,14,2096);
+        date1.setYear(2017);
+        System.out.println("Testing setYear with a valid input, expecting 01/05/2017: " + date1.toString());
+        System.out.println("Testing setYear with an invalid input, expecting error on the next line: ");
+        date1.setYear(2751);
+        date1.setMonth(12);
+        System.out.println("Testing setMonth with a valid input, expecting 12/05/2017: " + date1.toString());
+        System.out.println("Testing setMonth with an invalid input, expecting error on the next line: ");
+        date1.setMonth(13);
+        date1.setDay(31);
+        System.out.println("Testing setDay with a valid input, expecting 12/31/2017: " + date1.toString());
+        System.out.println("Testing setDay with an invalid input, expecting error on the next line: ");
+        date1.setDay(32);
+        System.out.println("");
+
+         // testing isAfter
+         System.out.println("Testing isAfter");
+         System.out.println("----------------------------");
+         System.out.println("Printing out date1 to show what it is prior to any changes: " + date1.toString());
+         System.out.println("Printing out date2 to show what it is prior to any changes: " + date2.toString());
+         System.out.println("Testing if date2 is after date1, expecting false: "+ date1.isAfter(date2));
+         System.out.println("Testing if date1 is after date2, expecting true: "+ date2.isAfter(date1));
+         date2.setYear(2017);
+         System.out.println("Testing if date2 is after date1 now that the years are the same, expecting false: "+ date1.isAfter(date2));
+         System.out.println("Testing if date1 is after date2 now that the years are the same, expecting true: "+ date2.isAfter(date1));
+        
+
     }
 
 }

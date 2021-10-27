@@ -123,6 +123,30 @@ public class Date {
         }
     }
 
+    // checks to see if the compareTo date is after the date this was called on
+    public boolean isAfter(Date compareTo) {
+        // first check if they're equal so after isequal is made insert a call here
+
+        if(compareTo.year >= this.year) {
+            if(compareTo.year > this.year) {
+                return true;
+            } else {
+                if(compareTo.month >= this.month) {
+                    if(compareTo.month > this.month) {
+                        return true;
+                    } else {
+                        if(compareTo.day > this.day) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            }
+        } 
+        return false; 
+    }
+
 
 
 
