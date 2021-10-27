@@ -71,6 +71,17 @@ public class MoneyDateOrderDriver {
          money1.add(-990,-4);
          money1.add(money2);
          System.out.println("Testing adding another money object, expecting $34.60: " + money1.toString());
+         System.out.println("");
+
+          // testing Equals
+          System.out.println("Testing Equals");
+          System.out.println("----------------------------");
+          System.out.println("money1 " + money1.toString());
+          System.out.println("money2 " + money2.toString());
+          System.out.println("money3 " + money3.toString());
+          System.out.println("money4 " + money4.toString());
+          System.out.println("Checking if money1 and money2 are equal, expected outcome, false: " + money1.equals(money2));
+          System.out.println("Checking if money3 and money4 are equal, expected outcome, true: " + money3.equals(money4));
 
 
 
