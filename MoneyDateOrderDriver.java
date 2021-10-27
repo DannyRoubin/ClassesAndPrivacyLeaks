@@ -1,3 +1,11 @@
+/*
+Name: Danny Roubin
+Class: CSS 143 Sec B
+Assignment: Classes and privacy leaks assignment
+
+Purpose of this file/class is to be a driver for the money, date, and order classes
+and to test every method with a proper and improper insertion of data
+*/
 public class MoneyDateOrderDriver {
     
     public static void main(String[] args) {
