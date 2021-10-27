@@ -17,6 +17,10 @@ public class Date {
     private int day;
     private int year;
 
+    public Date() {
+        System.out.println("Please only provide a valid date");
+    }
+
     public Date(int month, int day, int year) {
         if (month > 0 && month < 13) {
             if(day >0 && day < 32) {
@@ -50,6 +54,66 @@ public class Date {
             }
         } else {
             System.out.println("Invalid month");
+        }
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public int getMonth() {
+        if (this.month < 10) {
+            String holder = ("0"+this.month);
+            int res = Integer.parseInt(holder);
+            return res;
+        } else {
+        return this.month;
+        }
+    }
+
+    public int getDay() {
+        if (this.day < 10) {
+            String holder = ("0"+this.day);
+            int res = Integer.parseInt(holder);
+            return res;
+        } else {
+        return this.day;
+        }
+    }
+
+    public void setYear(int year) {
+        if (year > 2015 && year < 2027) {
+            this.year = year;
+        } else {
+            System.out.println("Invalid year");
+        }
+    }
+
+
+
+
+
+
+
+
+
+    public String toString() {
+        if(this.month < 10) {
+            if(this.day < 10) {
+                String res = ("0" + this.month + "/0" +this.day + "/" + this.year);
+                return res;
+            } else {
+                String res = ("0" + this.month + "/" +this.day + "/" + this.year);
+                return res;
+            }
+        } else {
+            if(this.day < 10) {
+                String res = (this.month + "/0" +this.day + "/" + this.year);
+                return res;
+            } else {
+                String res = (this.month + "/" +this.day + "/" + this.year);
+                return res;
+            }
         }
     }
 

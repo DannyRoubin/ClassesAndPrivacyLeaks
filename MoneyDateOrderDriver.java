@@ -7,14 +7,20 @@ Purpose of this file/class is to be a driver for the money, date, and order clas
 and to test every method with a proper and improper insertion of data
 */
 public class MoneyDateOrderDriver {
+
+
+    /*
+    ASK QUESTION ABOUT GETTERS RETURNING 01 OR 1
+    */
     
     public static void main(String[] args) {
-        moneyClassDriver();
+        // moneyClassDriver();
+        dateClassDriver();
     }
 
     // Driver method for testing money class
     public static void moneyClassDriver() {
-        // testing constructors constructors
+        // testing constructors 
         System.out.println("Testing constructors");
         System.out.println("---------------------------");
         Money money1 = new Money();
@@ -90,8 +96,39 @@ public class MoneyDateOrderDriver {
           System.out.println("money4 " + money4.toString());
           System.out.println("Checking if money1 and money2 are equal, expected outcome, false: " + money1.equals(money2));
           System.out.println("Checking if money3 and money4 are equal, expected outcome, true: " + money3.equals(money4));
-
-
-
     }
+
+    public static void dateClassDriver() {
+        // testing constructors and toString()
+        System.out.println("Testing constructors");
+        System.out.println("---------------------------");
+        System.out.println("Testing blank constructor, expecting error on the next line: ");
+        Date date1 = new Date();
+        Date date2 = new Date(1,2,2016);
+        System.out.println("Testing full input constructor, expecting '01/02/2016': " + date2.toString());
+        Date date3 = new Date(12,5,2018);
+        System.out.println("Testing full input constructor, expecting '12/05/2018': " + date3.toString());
+        Date date4 = new Date(11,15,2026);
+        System.out.println("Testing full input constructor, expecting '11/15/2026': " + date4.toString());
+        Date date5 = new Date(2,23,2019);
+        System.out.println("Testing full input constructor, expecting '02/23/2019': " + date5.toString());
+        Date date6 = new Date(date5);
+        System.out.println("Testing copy constructor, expecting '02/23/2019': " + date6.toString());
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid month' on next line: ");
+        Date date7 = new Date(0,20,2019);
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid day' on next line: ");
+        Date date8 = new Date(3,56,2021);
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid year' on next line: ");
+        Date date9 = new Date(3,12,11);
+        System.out.println("");
+
+
+        // testing getters
+        System.out.println("Testing getters");
+        System.out.println("----------------------------");
+        System.out.println("Testing getYear, expecting 2016: " + date2.getYear());
+        System.out.println("Testing getMonth, expecting 01: " + date2.getMonth());
+        System.out.println("Testing getDay, expecting 02: " + date2.getDay());
+    }
+
 }
