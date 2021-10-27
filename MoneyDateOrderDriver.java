@@ -57,6 +57,21 @@ public class MoneyDateOrderDriver {
          System.out.println("Testing Adding");
          System.out.println("----------------------------");
          System.out.println("Showing the value of money1 prior to any setters " + money1.toString());
+         money1.add(2);
+         System.out.println("Testing add with just a dollar amount, expecting $2.00: " + money1.toString());
+         System.out.println("Testing add with just a negative dollar amount, expecting error on next line: " );
+         money1.add(-2);
+         money1.add(1,10);
+         System.out.println("Testing add with a dollar and cent amount, expecting $3.10: " + money1.toString()); 
+         System.out.println("Testing add with a negative dollar and positive cent amount, expecting error on next line: "); 
+         money1.add(-2,40);
+         System.out.println("Testing add with a positive dollar and negative cent amount, expecting error on next line: "); 
+         money1.add(5,-80);
+         System.out.println("Testing add with a negative dollar and negative cent amount, expecting error on next line: "); 
+         money1.add(-990,-4);
+         money1.add(money2);
+         System.out.println("Testing adding another money object, expecting $34.60: " + money1.toString());
+
 
 
     }
