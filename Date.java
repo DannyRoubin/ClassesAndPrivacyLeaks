@@ -23,15 +23,15 @@ public class Date {
 
     public Date(int month, int day, int year) {
         if (month > 0 && month < 13) {
-            if(day >0 && day < 32) {
-                if(year > 2015 && year < 2027) {
+            if (day > 0 && day < 32) {
+                if (year > 2015 && year < 2027) {
                     this.month = month;
                     this.day = day;
                     this.year = year;
                 } else {
                     System.out.println("Invalid year");
                 }
-            } else  {
+            } else {
                 System.out.println("Invalid day");
             }
         } else {
@@ -41,15 +41,15 @@ public class Date {
 
     public Date(Date other) {
         if (other.month > 0 && other.month < 13) {
-            if(other.day >0 && other.day < 32) {
-                if(other.year > 2015 && other.year < 2027) {
+            if (other.day > 0 && other.day < 32) {
+                if (other.year > 2015 && other.year < 2027) {
                     this.month = other.month;
                     this.day = other.day;
                     this.year = other.year;
                 } else {
                     System.out.println("Invalid year");
                 }
-            } else  {
+            } else {
                 System.out.println("Invalid day");
             }
         } else {
@@ -63,21 +63,21 @@ public class Date {
 
     public int getMonth() {
         if (this.month < 10) {
-            String holder = ("0"+this.month);
+            String holder = ("0" + this.month);
             int res = Integer.parseInt(holder);
             return res;
         } else {
-        return this.month;
+            return this.month;
         }
     }
 
     public int getDay() {
         if (this.day < 10) {
-            String holder = ("0"+this.day);
+            String holder = ("0" + this.day);
             int res = Integer.parseInt(holder);
             return res;
         } else {
-        return this.day;
+            return this.day;
         }
     }
 
@@ -107,15 +107,15 @@ public class Date {
 
     public void setAll(int month, int day, int year) {
         if (month > 0 && month < 13) {
-            if(day >0 && day < 32) {
-                if(year > 2015 && year < 2027) {
+            if (day > 0 && day < 32) {
+                if (year > 2015 && year < 2027) {
                     this.month = month;
                     this.day = day;
                     this.year = year;
                 } else {
                     System.out.println("Invalid year");
                 }
-            } else  {
+            } else {
                 System.out.println("Invalid day");
             }
         } else {
@@ -127,67 +127,57 @@ public class Date {
     public boolean isAfter(Date compareTo) {
         // first check if they're equal so after isequal is made insert a call here
 
-        if(compareTo.year >= this.year) {
-            if(compareTo.year > this.year) {
+        if (compareTo.year >= this.year) {
+            if (compareTo.year > this.year) {
                 return true;
             } else {
-                if(compareTo.month >= this.month) {
-                    if(compareTo.month > this.month) {
+                if (compareTo.month >= this.month) {
+                    if (compareTo.month > this.month) {
                         return true;
                     } else {
-                        if(compareTo.day > this.day) {
+                        if (compareTo.day > this.day) {
                             return true;
                         } else {
                             return false;
                         }
                     }
-                } 
+                }
             }
-        } 
-        return false; 
+        }
+        return false;
     }
 
     public boolean equals(Object date) {
         if (date instanceof Date) {
             Date other = (Date) date;
-            if(this.month == other.month && this.year == other.year && this.day == other.day) {
+            if (this.month == other.month && this.year == other.year && this.day == other.day) {
                 return true;
             } else {
                 return false;
-            } 
+            }
         } else {
-            return false;}
+            return false;
+        }
     }
 
-
-
-
-
-
-
-
-
     public String toString() {
-        if(this.month < 10) {
-            if(this.day < 10) {
-                String res = ("0" + this.month + "/0" +this.day + "/" + this.year);
+        if (this.month < 10) {
+            if (this.day < 10) {
+                String res = ("0" + this.month + "/0" + this.day + "/" + this.year);
                 return res;
             } else {
-                String res = ("0" + this.month + "/" +this.day + "/" + this.year);
+                String res = ("0" + this.month + "/" + this.day + "/" + this.year);
                 return res;
             }
         } else {
-            if(this.day < 10) {
-                String res = (this.month + "/0" +this.day + "/" + this.year);
+            if (this.day < 10) {
+                String res = (this.month + "/0" + this.day + "/" + this.year);
                 return res;
             } else {
-                String res = (this.month + "/" +this.day + "/" + this.year);
+                String res = (this.month + "/" + this.day + "/" + this.year);
                 return res;
             }
         }
     }
-
-
-
 
 }
