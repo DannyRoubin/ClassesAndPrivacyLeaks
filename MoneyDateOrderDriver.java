@@ -14,7 +14,8 @@ public class MoneyDateOrderDriver {
 
     public static void main(String[] args) {
         // moneyClassDriver();
-        dateClassDriver();
+        // dateClassDriver();
+        orderClassDriver();
     }
 
     // Driver method for testing money class
@@ -60,8 +61,7 @@ public class MoneyDateOrderDriver {
         money2.setMoney(-2, 15);
         System.out.println("Testing setMoney with a negative cent amount, expecting error on the next line: ");
         money2.setMoney(98, -75);
-        System.out
-                .println("Testing setMoney with a negative cent and dollar amount, expecting error on the next line: ");
+        System.out.println("Testing setMoney with a negative cent and dollar amount, expecting error on the next line: ");
         money2.setMoney(-63, -150);
         money2.setMoney(30, 150);
         System.out.println("Testing setMoney with a cent value over 99, expecting $31.50: " + money2.toString());
@@ -77,14 +77,11 @@ public class MoneyDateOrderDriver {
         money1.add(-2);
         money1.add(1, 10);
         System.out.println("Testing add with a dollar and cent amount, expecting $3.10: " + money1.toString());
-        System.out
-                .println("Testing add with a negative dollar and positive cent amount, expecting error on next line: ");
+        System.out.println("Testing add with a negative dollar and positive cent amount, expecting error on next line: ");
         money1.add(-2, 40);
-        System.out
-                .println("Testing add with a positive dollar and negative cent amount, expecting error on next line: ");
+        System.out.println("Testing add with a positive dollar and negative cent amount, expecting error on next line: ");
         money1.add(5, -80);
-        System.out
-                .println("Testing add with a negative dollar and negative cent amount, expecting error on next line: ");
+        System.out.println("Testing add with a negative dollar and negative cent amount, expecting error on next line: ");
         money1.add(-990, -4);
         money1.add(money2);
         System.out.println("Testing adding another money object, expecting $34.60: " + money1.toString());
@@ -97,8 +94,7 @@ public class MoneyDateOrderDriver {
         System.out.println("money2 " + money2.toString());
         System.out.println("money3 " + money3.toString());
         System.out.println("money4 " + money4.toString());
-        System.out
-                .println("Checking if money1 and money2 are equal, expected outcome, false: " + money1.equals(money2));
+        System.out.println("Checking if money1 and money2 are equal, expected outcome, false: " + money1.equals(money2));
         System.out.println("Checking if money3 and money4 are equal, expected outcome, true: " + money3.equals(money4));
     }
 
@@ -118,14 +114,11 @@ public class MoneyDateOrderDriver {
         System.out.println("Testing full input constructor, expecting '02/23/2019': " + date5.toString());
         Date date6 = new Date(date5);
         System.out.println("Testing copy constructor, expecting '02/23/2019': " + date6.toString());
-        System.out.println(
-                "Testing full input constructor but looking for error, expecting 'invalid month' on next line: ");
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid month' on next line: ");
         Date date7 = new Date(0, 20, 2019);
-        System.out.println(
-                "Testing full input constructor but looking for error, expecting 'invalid day' on next line: ");
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid day' on next line: ");
         Date date8 = new Date(3, 56, 2021);
-        System.out.println(
-                "Testing full input constructor but looking for error, expecting 'invalid year' on next line: ");
+        System.out.println("Testing full input constructor but looking for error, expecting 'invalid year' on next line: ");
         Date date9 = new Date(3, 12, 11);
         System.out.println("");
 
@@ -173,19 +166,13 @@ public class MoneyDateOrderDriver {
         date2.setYear(2017);
         System.out.println("Printing out date1 to show what it is : " + date1.toString());
         System.out.println("Printing out date2 to show what it is : " + date2.toString());
-        System.out.println("Testing if date2 is after date1 now that the years are the same, expecting false: "
-                + date1.isAfter(date2));
-        System.out.println("Testing if date1 is after date2 now that the years are the same, expecting true: "
-                + date2.isAfter(date1));
+        System.out.println("Testing if date2 is after date1 now that the years are the same, expecting false: "+ date1.isAfter(date2));
+        System.out.println("Testing if date1 is after date2 now that the years are the same, expecting true: "+ date2.isAfter(date1));
         date2.setMonth(12);
         System.out.println("Printing out date1 to show what it is : " + date1.toString());
         System.out.println("Printing out date2 to show what it is : " + date2.toString());
-        System.out
-                .println("Testing if date2 is after date1 now that the years and months are the same, expecting false: "
-                        + date1.isAfter(date2));
-        System.out
-                .println("Testing if date1 is after date2 now that the years and months are the same, expecting true: "
-                        + date2.isAfter(date1));
+        System.out.println("Testing if date2 is after date1 now that the years and months are the same, expecting false: "+ date1.isAfter(date2));
+        System.out.println("Testing if date1 is after date2 now that the years and months are the same, expecting true: "+ date2.isAfter(date1));
         System.out.println("");
 
         // testing Equals
@@ -196,6 +183,70 @@ public class MoneyDateOrderDriver {
         System.out.println("Testing equals method, expecting false: " + date1.equals(date2));
         date2.setDay(31);
         System.out.println("Testing equals method, expecting true: " + date1.equals(date2));
+
+    }
+
+    public static void orderClassDriver() {
+        // testing constructors
+        System.out.println("Testing constructors");
+        System.out.println("---------------------------");
+        // first we need to make a new Money and Date object
+        Money amount1 = new Money(6, 50);
+        Date orderDate1 = new Date(6, 10, 2021);
+        Order order1 = new Order(amount1, orderDate1, "Bill", "Charger");
+        System.out.println("Testing constructor, expecting 'item= 'Charger' Customer name= 'Bill' amount= '$6.50'  orderDate= '06/10/2021' if sent= 'false'': "+ order1.toString());
+        Order order2 = new Order(order1);
+        System.out.println("Testing copy constructor, expecting 'item= 'Charger' Customer name= 'Bill' amount= '$6.50'  orderDate= '06/10/2021' if sent= 'false'': "+ order2.toString());
+        Order order3 = new Order(order2);
+        System.out.println("");
+
+        // testing getters
+        System.out.println("Testing getters");
+        System.out.println("----------------------------");
+        System.out.println("Testing getAmount, expecting $6.50: " + order1.getAmount());
+        System.out.println("Testing getOrderDate, expecting 06/10/21: " + order1.getOrderDate());
+        System.out.println("Testing getCustomer, expecting 'Bill': " + order1.getCustomer());
+        System.out.println("Testing getItem, expecting 'Charger': " + order1.getItem());
+        System.out.println("");
+
+        // testing is and set fulfilled
+        System.out.println("Testing is and set fulfilled");
+        System.out.println("----------------------------");
+        System.out.println("Testing is fulfilled on an unfulfilled order, expecting false: " + order1.isFulfilled());
+        System.out.println("Testing set fulfilled with a date prior to the order date, expecting error on next line: ");
+        Date fulfilledDate1 = new Date(6, 8, 2021);
+        order1.setFulfilled(fulfilledDate1);
+        fulfilledDate1.setDay(10);
+        order1.setFulfilled(fulfilledDate1);
+        System.out.println("Testing set fulfilled with the same date as the order date, expecting true: " + order1.isFulfilled());
+        Date fulfilledDate2 = new Date(6, 11, 2021);
+        System.out.println("Testing set fulfilled on an order that is already fulfilled, expecting error on next line: ");
+        order1.setFulfilled(fulfilledDate2);
+        order2.setFulfilled(fulfilledDate2);
+        System.out.println("Testing set fulfilled with a date after the order date, expecting true: " + order1.isFulfilled());
+        System.out.println("");
+
+        // testing rest of setters
+        System.out.println("Testing rest of setters");
+        System.out.println("----------------------------");
+        Date orderDate3 = new Date(7,11,2021);
+        System.out.println("Testing set orderDate with an order which is already fulfilled, expecting error on the next line:");
+        order1.setOrderDate(fulfilledDate2);
+        System.out.println("Testing set orderDate with a new date that is null, expecting error on the next line:");
+        order3.setOrderDate(null);
+        System.out.println("Testing set orderDate with a valid date , expecting true: " + order3.setOrderDate(orderDate3));
+        System.out.println("Showing the value of amount of order3 prior to using setter:" + order3.getAmount());
+        Money amount3 = new Money(9,99);
+        System.out.println("Testing set amount with an order which is already fulfilled, expecting error on the next line:");
+        order1.setAmount(amount3);
+        System.out.println("Testing set amount with a new amount that is null, expecting error on the next line:");
+        order3.setAmount(null);
+        System.out.println("Testing set amount with a valid amount , expecting true: " + order3.setAmount(amount3));
+        System.out.println("Showing the value of amount of order3 post setter:" + order3.getAmount());
+
+
+
+
 
     }
 

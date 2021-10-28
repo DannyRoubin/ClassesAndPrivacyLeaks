@@ -51,12 +51,17 @@ public class Order {
 
     public boolean setFulfilled(Date dateSent) {
         if (dateSent != null) {
+            if (this.sentDate == null) {
 
-            if (this.orderDate.isAfter(dateSent)) {
-                this.sentDate = dateSent;
-                return true;
+                if (this.orderDate.isAfter(dateSent) || this.orderDate.equals(dateSent)) {
+                    this.sentDate = dateSent;
+                    return true;
+                } else {
+                    System.out.println("The date given was before the order date and therefore not valid");
+                    return false;
+                }
             } else {
-                System.out.println("The date given was before the order date and therefore not valid");
+                System.out.println("This order has already been fulfilled");
                 return false;
             }
         } else {
@@ -89,6 +94,7 @@ public class Order {
                 return false;
             }
         } else {
+            System.out.println("The new amount can't be null");
             return false;
         }
     }
@@ -99,14 +105,17 @@ public class Order {
         }
     }
 
+    // For this toString I am also adding the customer name since I feel as if that
+    // is an important piece of info as well
     public String toString() {
         if (isFulfilled()) {
-            return "{" + " item='" + getItem() + "'" + " amount='" + getAmount() + "'" + ", orderDate='"
-                    + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'" + ", sentDate='" + this.sentDate + "'"
-                    + "}";
+            return "{" + " item='" + getItem() + "'" + " Customer name='" + getCustomer() + "'" + " amount='"
+                    + getAmount() + "'" + ", orderDate='" + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'"
+                    + ", sentDate='" + this.sentDate + "'" + "}";
         } else {
-            return "{" + " item='" + getItem() + "'" + " amount='" + getAmount() + "'" + ", orderDate='"
-                    + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'" + "}";
+            return "{" + " item='" + getItem() + "'" + " Customer name='" + getCustomer() + "'" + " amount='"
+                    + getAmount() + "'" + ", orderDate='" + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'"
+                    + "}";
         }
     }
 
