@@ -66,7 +66,7 @@ public class Order {
 
     public boolean setOrderDate(Date nextDate) {
         if (nextDate != null) {
-            if (sentDate == null) {
+            if (!this.isFulfilled()) {
                 this.orderDate = nextDate;
                 return true;
             } else {
@@ -75,6 +75,50 @@ public class Order {
             }
         } else {
             System.out.println("The new orderDate can't be null");
+            return false;
+        }
+    }
+
+    public boolean setAmount(Money amount) {
+        if (amount != null) {
+            if (!this.isFulfilled()) {
+                this.amount = amount;
+                return true;
+            } else {
+                System.out.println("This order has already been fulfilled");
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public void setCustomer(String customer) {
+        if (customer != null) {
+            this.customer = customer;
+        }
+    }
+
+    public String toString() {
+        if (isFulfilled()) {
+            return "{" + " item='" + getItem() + "'" + " amount='" + getAmount() + "'" + ", orderDate='"
+                    + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'" + ", sentDate='" + this.sentDate + "'"
+                    + "}";
+        } else {
+            return "{" + " item='" + getItem() + "'" + " amount='" + getAmount() + "'" + ", orderDate='"
+                    + getOrderDate() + "'" + ", if sent='" + isFulfilled() + "'" + "}";
+        }
+    }
+
+    public boolean equals(Object toCompare) {
+        if (toCompare instanceof Order) {
+            Order other = (Order) toCompare;
+            if (this.customer == other.customer && this.item == other.item) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
             return false;
         }
     }
