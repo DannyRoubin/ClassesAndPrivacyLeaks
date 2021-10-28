@@ -134,6 +134,7 @@ public class Money {
 
     // checks to make sure that two money objects are equal in value
     public boolean equals(Object o) {
+        if( o instanceof Money ) {
         centCheck();
         Money other = (Money) o;
         if(this.dollars == other.dollars && this.cents == other.cents) {
@@ -141,6 +142,9 @@ public class Money {
         } else {
             return false;
         }
+    } else {
+        return false;
+    }
     }
 
     // toString method, contains if statement for proper printing if the number is under 10

@@ -164,9 +164,26 @@ public class MoneyDateOrderDriver {
          System.out.println("Testing if date2 is after date1, expecting false: "+ date1.isAfter(date2));
          System.out.println("Testing if date1 is after date2, expecting true: "+ date2.isAfter(date1));
          date2.setYear(2017);
+         System.out.println("Printing out date1 to show what it is : " + date1.toString());
+         System.out.println("Printing out date2 to show what it is : " + date2.toString());
          System.out.println("Testing if date2 is after date1 now that the years are the same, expecting false: "+ date1.isAfter(date2));
          System.out.println("Testing if date1 is after date2 now that the years are the same, expecting true: "+ date2.isAfter(date1));
-        
+         date2.setMonth(12);
+         System.out.println("Printing out date1 to show what it is : " + date1.toString());
+         System.out.println("Printing out date2 to show what it is : " + date2.toString());
+         System.out.println("Testing if date2 is after date1 now that the years and months are the same, expecting false: "+ date1.isAfter(date2));
+         System.out.println("Testing if date1 is after date2 now that the years and months are the same, expecting true: "+ date2.isAfter(date1));
+         System.out.println("");
+
+         // testing Equals
+         System.out.println("Testing Equals");
+         System.out.println("----------------------------");
+         System.out.println("Printing out date1 to show what it is prior to any changes: " + date1.toString());
+         System.out.println("Printing out date2 to show what it is prior to any changes: " + date2.toString());
+         System.out.println("Testing equals method, expecting false: " + date1.equals(date2));
+         date2.setDay(31);
+         System.out.println("Testing equals method, expecting true: " + date1.equals(date2));
+
 
     }
 

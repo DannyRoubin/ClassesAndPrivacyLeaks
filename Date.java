@@ -141,10 +141,22 @@ public class Date {
                             return false;
                         }
                     }
-                }
+                } 
             }
         } 
         return false; 
+    }
+
+    public boolean equals(Object date) {
+        if (date instanceof Date) {
+            Date other = (Date) date;
+            if(this.month == other.month && this.year == other.year && this.day == other.day) {
+                return true;
+            } else {
+                return false;
+            } 
+        } else {
+            return false;}
     }
 
 
