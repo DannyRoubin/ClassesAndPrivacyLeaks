@@ -17,10 +17,12 @@ public class Date {
     private int day;
     private int year;
 
+    // empty constructor which displays an error message
     public Date() {
         System.out.println("Please only provide a valid date");
     }
 
+    // intended constructor which checks if all the date is valid prior to inserting any data anywhere
     public Date(int month, int day, int year) {
         if (month > 0 && month < 13) {
             if (day > 0 && day < 32) {
@@ -39,6 +41,8 @@ public class Date {
         }
     }
 
+    // copy constructor which may be overkill but it makes sure that the data being passed in is also all valid prior
+    // to inserting that new data anywhere
     public Date(Date other) {
         if (other.month > 0 && other.month < 13) {
             if (other.day > 0 && other.day < 32) {
@@ -57,30 +61,24 @@ public class Date {
         }
     }
 
+    // simple getter which gets the year
     public int getYear() {
         return this.year;
     }
 
+    // Simple getter which gets the month
     public int getMonth() {
-        if (this.month < 10) {
-            String holder = ("0" + this.month);
-            int res = Integer.parseInt(holder);
-            return res;
-        } else {
-            return this.month;
-        }
+        return this.month;
+        
     }
 
+    // Simple getter which gets the day
     public int getDay() {
-        if (this.day < 10) {
-            String holder = ("0" + this.day);
-            int res = Integer.parseInt(holder);
-            return res;
-        } else {
-            return this.day;
-        }
+        return this.day;
+        
     }
 
+    // setter which first makes sure that the year is valid prior to setting it
     public void setYear(int year) {
         if (year > 2015 && year < 2027) {
             this.year = year;
@@ -89,6 +87,7 @@ public class Date {
         }
     }
 
+    // setter which first makes sure that the month is valid prior to setting it
     public void setMonth(int month) {
         if (month > 0 && month < 13) {
             this.month = month;
@@ -97,6 +96,7 @@ public class Date {
         }
     }
 
+    // setter which first makes sure that the day is valid prior to setting it
     public void setDay(int day) {
         if (day > 0 && day < 32) {
             this.day = day;
@@ -105,6 +105,7 @@ public class Date {
         }
     }
 
+    // setter which first makes sure that all the data is valid prior to setting any of it
     public void setAll(int month, int day, int year) {
         if (month > 0 && month < 13) {
             if (day > 0 && day < 32) {
@@ -125,8 +126,6 @@ public class Date {
 
     // checks to see if the compareTo date is after the date this was called on
     public boolean isAfter(Date compareTo) {
-        // first check if they're equal so after isequal is made insert a call here
-
         if (compareTo.year >= this.year) {
             if (compareTo.year > this.year) {
                 return true;
@@ -147,6 +146,7 @@ public class Date {
         return false;
     }
 
+    // checks to see if two dates are equal in content 
     public boolean equals(Object date) {
         if (date instanceof Date) {
             Date other = (Date) date;
@@ -160,6 +160,7 @@ public class Date {
         }
     }
 
+    // simple to string method that formats the month and day depending on if they're a single or double digit value
     public String toString() {
         if (this.month < 10) {
             if (this.day < 10) {

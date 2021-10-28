@@ -223,7 +223,8 @@ public class MoneyDateOrderDriver {
         System.out.println("Testing set fulfilled on an order that is already fulfilled, expecting error on next line: ");
         order1.setFulfilled(fulfilledDate2);
         order2.setFulfilled(fulfilledDate2);
-        System.out.println("Testing set fulfilled with a date after the order date, expecting true: " + order1.isFulfilled());
+        System.out.println("Testing set fulfilled with a date after the order date, expecting true: " + order2.isFulfilled());
+        System.out.println("Testing is fulfilled on fulfilled order, expecting true: " + order2.isFulfilled());
         System.out.println("");
 
         // testing rest of setters
@@ -243,6 +244,24 @@ public class MoneyDateOrderDriver {
         order3.setAmount(null);
         System.out.println("Testing set amount with a valid amount , expecting true: " + order3.setAmount(amount3));
         System.out.println("Showing the value of amount of order3 post setter:" + order3.getAmount());
+        System.out.println("Showing the value of the customer of order3 prior to using setter:" + order3.getCustomer());
+        System.out.println("Testing set customer with a new customer that is null, expecting error on the next line:");
+        order3.setCustomer(null);
+        System.out.println("Testing set customer with an order which is already fulfilled, expecting error on the next line:");
+        order1.setCustomer("BillyBob");
+        order3.setCustomer("Heather");
+        System.out.println("Testing set customer with a new customer that is valid, expecting 'Heather': " + order3.getCustomer());
+        System.out.println("");
+
+        // testing Equals
+        System.out.println("Testing Equals");
+        System.out.println("----------------------------");
+        System.out.println("printing out all three orders to view what everything is prior to show equals is correct");
+        System.out.println("Order 1: " + order1.toString());
+        System.out.println("Order 2: " + order2.toString());
+        System.out.println("Order 3: " + order3.toString());
+        System.out.println("checking if order1 and order2 are equal, expecting true: " + order1.equals(order2));
+        System.out.println("checking if order1 and order3 are equal, expecting false: " + order1.equals(order3));
 
 
 

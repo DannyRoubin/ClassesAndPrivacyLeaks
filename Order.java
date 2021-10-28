@@ -1,3 +1,11 @@
+/*
+Name: Danny Roubin
+Class: CSS 143 Sec B
+Assignment: Classes and privacy leaks assignment
+
+Purpose of this file/class is to be a money class where a user is able to add in a dollar and cent amount, 
+then is able to add to it, set dollar and cent amounts, compare it to other money objects, and print the value out
+*/
 public class Order {
     private Money amount;
     private Date orderDate;
@@ -5,8 +13,7 @@ public class Order {
     private String customer;
     private String item;
 
-    // Note check for null on any method that passes in an object
-
+    // constructor which makes sure that no null data is entered in prior to setting any of the data in
     public Order(Money amount, Date orderDate, String customer, String item) {
         if (amount != null && orderDate != null && customer != null && item != null) {
             this.amount = amount;
@@ -16,6 +23,7 @@ public class Order {
         }
     }
 
+    // copy constructor which makes sure all the incoming data is valid prior to setting anything
     public Order(Order toCopy) {
         if (toCopy.amount != null && toCopy.orderDate != null && toCopy.customer != null && toCopy.item != null) {
             this.amount = toCopy.amount;
@@ -25,22 +33,27 @@ public class Order {
         }
     }
 
+    // simple get method which gets the amount
     public Money getAmount() {
         return this.amount;
     }
 
+    // simple get method which gets the orderDate
     public Date getOrderDate() {
         return this.orderDate;
     }
 
+    // simple get method which gets the customer name
     public String getCustomer() {
         return this.customer;
     }
 
+    // simple get method which gets the item
     public String getItem() {
         return this.item;
     }
 
+    // method to check if the order is fulfilled (if it was sent out) or not
     public boolean isFulfilled() {
         if (sentDate != null) {
             return true;
@@ -49,9 +62,11 @@ public class Order {
         }
     }
 
+    // setter for sentDate, but first checks if the order has been fulfilled, if not then checks to make sure
+    // the dateSent is either after or equal to the orderDate prior to setting any data
     public boolean setFulfilled(Date dateSent) {
         if (dateSent != null) {
-            if (this.sentDate == null) {
+            if (isFulfilled() == false) {
 
                 if (this.orderDate.isAfter(dateSent) || this.orderDate.equals(dateSent)) {
                     this.sentDate = dateSent;
@@ -69,6 +84,7 @@ public class Order {
         }
     }
 
+    // sets the orderdate but first checks if the order has already been fulfilled
     public boolean setOrderDate(Date nextDate) {
         if (nextDate != null) {
             if (!this.isFulfilled()) {
@@ -84,6 +100,7 @@ public class Order {
         }
     }
 
+    // sets the amount of the order but first checks to see if the order has already been fulfilled
     public boolean setAmount(Money amount) {
         if (amount != null) {
             if (!this.isFulfilled()) {
@@ -99,9 +116,16 @@ public class Order {
         }
     }
 
+    // Sets a customer for the order but first makes sure that the order is not already fulfilled
     public void setCustomer(String customer) {
         if (customer != null) {
-            this.customer = customer;
+            if (!this.isFulfilled()) {
+                this.customer = customer;
+            } else {
+                System.out.println("This order has already been fulfilled");
+            }
+        } else {
+            System.out.println("the customer cannot be null");
         }
     }
 
@@ -119,6 +143,7 @@ public class Order {
         }
     }
 
+    // equals method to check if the two orders are equal to each other in content
     public boolean equals(Object toCompare) {
         if (toCompare instanceof Order) {
             Order other = (Order) toCompare;
